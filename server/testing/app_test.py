@@ -64,7 +64,5 @@ class TestApp:
             client.delete('/logout')
 
             logged_out_response = client.get('/check_session')
-            logged_out_json = logged_out_response.get_json()
-
             assert(logged_out_response.status_code == 401)
-            assert(logged_out_json == {})
+            assert logged_out_response.data == b'{}\n'
